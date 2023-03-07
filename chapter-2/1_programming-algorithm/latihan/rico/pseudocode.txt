@@ -1,0 +1,21 @@
+# menghitung keliling sebuah lingkaran
+
+START
+
+INPUT the value of radius of the circle and SAVE in the variable (r) 
+
+IF r modulus 7 = 0 
+
+    SET the value of phi 22/7 and SAVE in the variable (phi)
+
+ELSE 
+
+    SET the value of phi 3.14 and SAVE in the variable (phi)
+
+ENDIF
+
+Calculate the circumference of the circle using 2 x phi x r and SAVE the result in the variable (result)
+
+PRINT the result (result)
+
+END
