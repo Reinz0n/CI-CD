@@ -1,0 +1,6 @@
+Algoritma keliling lingkaran
+
+- Menetapkan nilai phi = 3.14
+- Hitung jari" lingkaran
+- Rumus adalah k = 2 * phi * r
+- Nilai k dicetak sebagai output
