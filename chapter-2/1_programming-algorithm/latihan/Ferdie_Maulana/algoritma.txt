@@ -1,0 +1,7 @@
+Mulai
+definisikan phi dengan 3.14 atau 22/7
+masukkan nilai phi
+masukkan nilai jari-jari
+hitung keliling = 2 x phi x jari-jari
+cetak keliling lingkaran
+selesai
