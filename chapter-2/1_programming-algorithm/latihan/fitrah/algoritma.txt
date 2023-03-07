@@ -1,0 +1,4 @@
+menetapkan nilai pi = 3,14
+memasukkan nilai jari -jari
+menghitung keliling jari-jari menggunakan rumus K = 2 * pi * jari-jari
+nilai k akan dicetak sebagai output

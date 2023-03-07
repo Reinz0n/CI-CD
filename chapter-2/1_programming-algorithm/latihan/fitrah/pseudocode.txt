@@ -1,0 +1,9 @@
+menghitung keliling lingkaran
+ deskripsi
+ var pi,keliling : float
+ var r : integer
+  algoritma :
+  pi <- 3.14
+  read(r)
+  keliling <- 2 * pi * r
+  write(keliling)
