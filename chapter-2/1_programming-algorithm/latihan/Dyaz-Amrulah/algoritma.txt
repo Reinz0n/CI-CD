@@ -1,0 +1,8 @@
+Algoritma Menghitung Keliling Lingkaran
+
+1. Deklarasikan variabel yang dibutuhkan untuk menghitung keliling lingkaran (PHI, jari-jari, dan result)
+2. User memasukan nilai dari jari-jari
+3. Sistem memeriksa kondisi
+4. Apabila jari-jari lebih dari 0 maka hitung keliling lingkaran 2 * PHI * jari-jari dan Selesai
+5. Apabila jari-jari kurang dari atau sama dengan 0 maka tampilkan "Minimal Masukan angka lebih  besar dari 1!!" dan kembali ke no 2
+6. Apabila tidak sesuai satupun maka tampilkan "Harap Masukan Data Yang Benar!!" dan Selesai
