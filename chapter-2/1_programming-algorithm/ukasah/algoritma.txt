@@ -1,5 +1,0 @@
-Algoritma menghitung luas dan keliling lingkaran
-
-1. Masukkan nilai jari-jari
-2. Output hasil keliling
-3. Output hasil luas
