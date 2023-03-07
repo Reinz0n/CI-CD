@@ -1,0 +1,4 @@
+1. Mendeklarasikan variabel keliling, phi, dan jari-jari
+2. Masukan jari-jari lingkaran
+3. Menghitung keliling lingkaran dengan rumus 2 * 3,14 * jari-jari inputan
+4. Menampilkan hasil output keliling
