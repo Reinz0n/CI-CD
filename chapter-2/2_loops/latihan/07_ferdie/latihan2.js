@@ -16,6 +16,7 @@ function Pola1(total){
 Pola1(5);
 console.log("\n");
 
+
 function Pola2(total){
     let star = ''; 
     for(let i = total; i >= 1; i --){ 
@@ -27,6 +28,7 @@ function Pola2(total){
 console.log(star);
 }
 Pola2(5);
+
 
 function Pola3(total){
     let star = "";
@@ -44,6 +46,7 @@ function Pola3(total){
     console.log(star);
 }
 Pola3(5);
+
 
 function Pola4(total){
     let star = "";
