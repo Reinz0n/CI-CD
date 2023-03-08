@@ -44,8 +44,8 @@
 // console.log(BintangKanan(5));
 
 function segitiga1(n) {
-  let pattren = '';
   for (let i = n; i >= 1; i--) {
+    let pattren = '';
     for (let j = 1; j <= i; j++) {
       pattren += '* ';
     }
@@ -58,8 +58,8 @@ segitiga1(5);
 
 
 function segitiga2(n) {
-  let pattren = '';
   for (let i = n; i >= 1; i--) {
+    let pattren = '';
     for (let j = 1; j <= n; j++) {
       pattren += j >= i ? ' *' : '  ';
     }
@@ -72,8 +72,8 @@ segitiga2(5);
 
       
 function segitiga3(n) {
-  let pattren = '';
   for (let i = n; i >= 1; i--) {
+    let pattren = '';
     for (let j = 1; j <= n; j++) {
       pattren += j > i ? ' ' : ' *';
     }
