@@ -1,0 +1,16 @@
+PROGRAM keliling_lingkaran
+
+DEKLARASI	
+	var fingers, integer; 
+	var phi, float;
+	var const, 2;
+
+ALGORITMA
+	read (fingers, phi, const);
+	around <- ( 2 phi r);
+ 	IF (fingers = = 7) THEN
+ 		console.log(phi = 22/7)
+ 	ELSE (fingers != 7) 
+ 		console.log(phi = phi)
+	ENDIF
+	write (around);
