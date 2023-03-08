@@ -1,0 +1,6 @@
+Algoritma untuk menghitung keliling lingkaran:
+1. Menentukan nilai jari-jari (r) dari suatu lingkaran.
+2. Hitunglah operasi keliling tersebut, keliling = 2 phi r.
+3. Jika nilai jari-jari (r) sama dengan 7, maka nilai phi sama dengan 22/7.
+4. Jika nilai jari-jari (r) tidak sama dengan 7, maka perhitungan menggunakan nilai phi.
+5. Hasil keliling dari suatu lingkaran pun telah didapatkan.
