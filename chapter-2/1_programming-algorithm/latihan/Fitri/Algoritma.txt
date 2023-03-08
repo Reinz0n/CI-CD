@@ -1,0 +1,5 @@
+function akarKuadrat(number) {
+    typeof number === 'number' ? console.log(Math.sqrt(number)) : console.log('Not a number') ;
+}
+
+akarKuadrat(9);
