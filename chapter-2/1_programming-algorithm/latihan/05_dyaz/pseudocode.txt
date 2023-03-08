@@ -1,0 +1,26 @@
+
+Judul : Program_Menghitung_Keliling_Lingkaran
+
+//Deskripsi
+VAR
+PHI := 3.14;
+jari, result := Integer;
+kondisi := boolean;
+
+//Implementasi
+kondisi := true;
+WHILE kondisi THEN
+BEGIN
+  WRITE("Masukan Jari-Jari Lingkaran : ");
+  READLN(jari);
+  IF jari >= 1 THEN 
+    result := 2 * PHI * jari;
+    WRITE("Keliling Lingkarannya : " + result);
+    kondisi := false;
+  ELSE IF jari <= 0 THEN
+    WRITE("Minimal Masukan angka lebih  besar dari 1 !!");
+  ELSE
+    kondisi := false;
+    WRITE("Harap Masukan Data Yang Benar!!");
+  ENDIF
+ENDWHILE

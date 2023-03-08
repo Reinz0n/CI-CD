@@ -1,0 +1,12 @@
+Judul 
+Menghitung luas dan keliling sebuah lingkaran
+
+Deskripsi
+Var r, phi, keliling, luas
+
+Algoritma
+Input(r)
+keliling <-- 2 * phi * r
+luas <-- phi * r**2
+output(keliling)
+output(luas)

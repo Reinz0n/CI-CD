@@ -1,0 +1,9 @@
+Algoritma:
+
+Mulai program.
+Masukkan nilai jari-jari lingkaran.
+Hitung keliling lingkaran dengan rumus keliling = 2 x phi x r.
+Hitung luas lingkaran dengan luas = phi x r x r
+Tampilkan hasil perhitungan keliling lingkaran.
+Tampilkan hasil perhitungan luas lingkaran.
+5. Selesai program.

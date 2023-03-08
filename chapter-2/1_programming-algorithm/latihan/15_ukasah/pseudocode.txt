@@ -1,0 +1,12 @@
+Judul
+    Menghitung luas_keliling_lingkaran
+
+Deskripsi
+    var jari jari, luas, keliling, phi
+
+Algoritma
+    phi = 3.14
+    input jari jari
+    luas = phi* r**2
+    keliling = 2 * phi * r
+    print luas dan keliling lingkaran

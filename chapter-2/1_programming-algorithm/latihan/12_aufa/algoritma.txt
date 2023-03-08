@@ -1,0 +1,8 @@
+1. Mulai
+2. Menentukan nilai pi sama dengan 3.14
+3. Membaca nilai radius
+4. Menghitung keliling lingkaran dengan formula k = 2 x pi x radius
+5. Menghitung luas lingkaran dengan formula l = pi x radius ^ 2
+6. Menampilkan hasil perhitungan keliling lingkaran
+7. Menampilkan hasil perhitungan luas lingkaran
+8. Selesai

@@ -1,0 +1,7 @@
+PROGRAM menghitung_keliling_lingkaran
+
+var jari_jari, result;
+
+READ jari_jari;
+result <- 2 * 3,14 * jari_jari
+WRITE result;

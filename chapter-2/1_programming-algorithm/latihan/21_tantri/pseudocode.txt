@@ -1,0 +1,12 @@
+Judul
+    Menghitung luas dan keliling lingkaran
+
+Deskripsi
+    var r, l, k, phi
+
+Algoritma
+    phi = 3.14
+    input (r)
+    l = phi* r**2
+    k = 2 * phi * r
+    output(l,k)

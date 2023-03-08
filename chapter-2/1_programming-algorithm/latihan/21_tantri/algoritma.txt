@@ -1,0 +1,8 @@
+ -mulai
+deklarasi variable jari-jari(r), luas(l), keliling(k)
+masukkan jari-jari
+hitung luas lingkaran = phi * r**2
+hitung keliling lingkaran = 2 * phi * r
+cetak luas 
+cetak keliling
+selesai

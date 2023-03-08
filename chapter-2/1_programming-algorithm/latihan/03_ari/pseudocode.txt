@@ -1,0 +1,21 @@
+1. Deklarasikan variabel bilangan dan masukkan sebuah nilai bilangan.
+2. Hitung sisa bagi bilangan tersebut dengan angka 2 menggunakan operator modulo (%).
+3. Gunakan struktur kondisional if untuk mengecek apakah sisa bagi bilangan sama dengan 0. Jika iya, maka bilangan tersebut adalah bilangan genap, dan jika tidak, maka bilangan tersebut adalah bilangan ganjil.
+4. Tampilkan hasil penentuan bilangan ganjil atau genap menggunakan console.log.
+
+Berikut ini adalah pseudocode lengkapnya:
+
+BEGIN
+    // Deklarasi variabel bilangan
+    bilangan = nilai_bilangan;
+
+    // Menentukan bilangan ganjil atau genap
+    sisa = bilangan % 2;
+    JIKA (sisa == 0) {
+        // bilangan genap
+        Tampilkan bilangan + " adalah bilangan genap";
+    } LAINNYA {
+        // bilangan ganjil
+        Tampilkan bilangan + " adalah bilangan ganjil";
+    }
+END

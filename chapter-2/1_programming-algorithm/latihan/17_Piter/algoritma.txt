@@ -1,0 +1,5 @@
+1. siapkan phi dan masukkan kedalam variabel phi
+2. Siapkan Angka jari-jari lingkaran dan masukkan kedalam variabel r
+3. hitung 2 dikali phi dikali r
+4. simpan hasil perhitungan kedalam variabel hasil
+5. tampilkan hasil

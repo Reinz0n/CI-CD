@@ -1,0 +1,4 @@
+1. Siapkan Angka jari-jari lingkaran dan masukkan kedalam variabel
+2. cek jika jari-jari bisa dibagi 7, maka phi yang dipakai 22/7 jika tidak bisa, phi yang dipakai 3.14
+3. hitung keliling sebuah lingkaran dengan rumus 2 x phi x r
+4. tampilkan hasilnya
