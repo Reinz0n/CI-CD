@@ -1,4 +1,4 @@
-# Perulangan
+# Loops and Iteration
 
 ## 1. "for" loop
 
