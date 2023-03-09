@@ -1,0 +1,4 @@
+1. Set phi = 3.14
+2. Input jari-jari (r)
+3. Hitung keliling lingkaran (K) dengan rumus K = 2 * phi * r
+4. Output K ke perangkat output
