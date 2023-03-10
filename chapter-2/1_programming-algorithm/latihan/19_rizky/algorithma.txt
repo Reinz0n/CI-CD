@@ -1,0 +1,4 @@
+1. Menetapkan nilai phi = 3.14
+2. Menghitung jari-jari lingkaran
+3. Rumus untuk menghitung Keliling Lingkaran  yaitu K=2*phi*r
+4. Nilai K (Keliling Lingkaran ) akan dicetak sebagai output ke perangkat output (keluaran)
