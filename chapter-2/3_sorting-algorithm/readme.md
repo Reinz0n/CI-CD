@@ -7,22 +7,64 @@ Example :
 ```js
 /* bubbele sort */
 function bubbleSort(arr) {
-  for (let i = arr.length - 1; i >= 0; i--) {
-    for (let j = 1; j <= i; j++) {
-      console.log("");
-      console.log(arr);
-      console.log("Bandingkan " + arr[j - 1] + " dengan " + arr[j]);
+  for (let j = 0; j < arr.length - 1; j++) {
+    for (let i = 0; i < arr.length - 1; i++) {
+      let a = arr[i];
+      let b = arr[i + 1];
 
-      if (arr[j - 1] > arr[j]) {
-        var temp = arr[j - 1];
-        arr[j - 1] = arr[j];
-        arr[j] = temp;
+      if (b < a) {
+        let temp = arr[i + 1];
+        arr[i + 1] = arr[i];
+        arr[i] = temp;
       }
-
-      console.log(arr);
     }
   }
-  // return arr;
+
+  return arr;
 }
-console.log(bubbleSort([8, 6, 7, 20, 1]));
+console.log(bubbleSort([12, 98, 23, 47, 65, 32, 49, 87, 71, 23, 12, 35]));
+```
+
+2. Merge Sort
+
+Example :
+
+```js
+/* merge sort */
+function mergeShort(arr) {
+  var len = arr.length;
+  if (len < 2) return arr;
+
+  var mid = Math.floor(len / 2),
+    left = arr.slice(0, mid),
+    right = arr.slice(mid);
+
+  console.log("kiri " + left);
+  console.log("kanan " + right);
+  console.log("\n");
+
+  return merge(mergeShort(left), mergeShort(right));
+}
+
+function merge(left, right) {
+  var result = [],
+    lLen = left.length,
+    rLen = right.length,
+    l = 0,
+    r = 0;
+
+  while (l < lLen && r < rLen) {
+    if (left[l] < right[r]) {
+      result.push(left[l++]);
+    } else {
+      result.push(right[r++]);
+    }
+  }
+
+  result = result.concat(left.slice(l).concat(right.slice(r)));
+  console.log(result);
+  return result;
+}
+
+console.log(mergeShort([7, 5, 2, 4, 3, 9]));
 ```
