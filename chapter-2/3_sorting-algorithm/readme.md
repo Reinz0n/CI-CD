@@ -152,6 +152,22 @@ class BinarySearchTree {
       }
     }
   }
+
+  search(value) {
+    return this.searchNode(this.root, value);
+  }
+
+  searchNode(node, value) {
+    if (node == null) {
+      return false;
+    } else if (value < node.value) {
+      return this.searchNode(node.left, value);
+    } else if (value > node.value) {
+      return this.searchNode(node.right, value);
+    } else {
+      return true;
+    }
+  }
 }
 
 let bst = new BinarySearchTree();
@@ -161,8 +177,10 @@ bst.insert(6);
 bst.insert(8);
 bst.insert(3);
 bst.insert(9);
-// bst.insert(4);
-// bst.insert(7);
+bst.insert(4);
+bst.insert(7);
 
-console.log(bst);
+console.log(bst.search(8));
+
+console.log(JSON.stringify(bst));
 ```
