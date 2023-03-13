@@ -102,3 +102,67 @@ function quickSort(arr) {
 
 console.log(quickSort([5, 2, 3, 7, 8, 1, 4, 6]));
 ```
+
+## 4. Binary Search Tree
+
+Example :
+
+```js
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null; // akan berisi node
+    this.right = null; // akan berisi node
+  }
+}
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+
+  insert(value) {
+    let newNode = new Node(value);
+
+    if (this.root === null) {
+      this.root = newNode;
+    } else {
+      this.insertNode(this.root, newNode);
+    }
+  }
+
+  insertNode(node, newNode) {
+    if (newNode.value > node.value) {
+      // masuk ke kanan
+      if (node.right === null) {
+        // masukkan ke right child
+        node.right = newNode;
+      } else {
+        // recursive
+        this.insertNode(node.right, newNode);
+      }
+    } else {
+      // masuk ke kiri
+      if (node.left === null) {
+        // masukkan ke left child
+        node.left = newNode;
+      } else {
+        // recursive
+        this.insertNode(node.left, newNode);
+      }
+    }
+  }
+}
+
+let bst = new BinarySearchTree();
+
+// 6,8,3,9,4,7
+bst.insert(6);
+bst.insert(8);
+bst.insert(3);
+bst.insert(9);
+// bst.insert(4);
+// bst.insert(7);
+
+console.log(bst);
+```
