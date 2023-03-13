@@ -184,3 +184,26 @@ console.log(bst.search(8));
 
 console.log(JSON.stringify(bst));
 ```
+
+## 5. Deret Fibonacci
+
+Example:
+
+```js
+function fibonacci(i) {
+  let sebelum = 0,
+    sesudah = 1,
+    sementara;
+
+  while (i >= 0) {
+    sementara = sebelum;
+    sebelum = sebelum + sesudah;
+    sesudah = sementara;
+    i--;
+  }
+
+  return sesudah;
+}
+
+console.log(fibbonaci(7));
+```
