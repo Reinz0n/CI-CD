@@ -1,6 +1,6 @@
 # Sorting Alhorithm
 
-## 1. `Bubble Sort
+## 1. Bubble Sort
 
 Example :
 
@@ -25,7 +25,7 @@ function bubbleSort(arr) {
 console.log(bubbleSort([12, 98, 23, 47, 65, 32, 49, 87, 71, 23, 12, 35]));
 ```
 
-2. Merge Sort
+## 2. Merge Sort
 
 Example :
 
@@ -67,4 +67,38 @@ function merge(left, right) {
 }
 
 console.log(mergeShort([7, 5, 2, 4, 3, 9]));
+```
+
+## 3. Quick Sort
+
+Example :
+
+```js
+function quickSort(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  let pivot = arr[0];
+  let partisiKiri = [];
+  let partisiKanan = [];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      partisiKiri.push(arr[i]);
+    } else {
+      partisiKanan.push(arr[i]);
+    }
+  }
+
+  console.log(`pivot         : ${pivot}`);
+  console.log(`partisi kiri  : ${partisiKiri}`);
+  console.log(`partisi kanan : ${partisiKanan}`);
+  console.log(`\n`);
+
+  // return quickSort(partisiKiri).concat(pivot, quickSort(partisiKanan));
+  return [...quickSort(partisiKiri), pivot, ...quickSort(partisiKanan)];
+}
+
+console.log(quickSort([5, 2, 3, 7, 8, 1, 4, 6]));
 ```
