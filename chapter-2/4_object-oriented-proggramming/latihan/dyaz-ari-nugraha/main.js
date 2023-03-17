@@ -26,6 +26,14 @@ const eatMeat = (Base) =>
     }
   };
 
+  const eatgrass = (Base) =>
+  class extends Base {
+    grass() {
+      return "Hobi memakan rumput";
+    }
+  };
+
+
 class Animal {
   constructor(name, color) {
     this.name = name;
@@ -79,6 +87,27 @@ class Anjing extends breatheWithLungs(eatMeat(Animal)) {
   }
 }
 
+class Kerbau extends breatheWithLungs(eatMeat(Animal)) {
+  constructor(name, color) {
+    super(name, color);
+  }
+
+  //TODO meng-override method run() dari kelas induk Animal
+  run() {
+    return `${super.run()} ${this.lungs()} ${this.grass()}`;
+  }
+
+  //TODO untuk me return value method lungs() dari helper function breatheWithLungs
+  lungs() {
+    return super.lungs();
+  }
+
+  //TODO untuk me return value method lungs() dari helper function eatRice
+  grass() {
+    return super.grass();
+  }
+}
+
 class Ikan extends breatheWithGills(Animal) {
   constructor(name, color) {
     super(name, color);
@@ -106,4 +135,8 @@ console.log();
 
 const anjing = new Anjing("Anjing", "Cokelat");
 console.log(anjing.run());
+console.log();
+
+const kerbau = new Kerbau("Kerbau", "Hitam");
+console.log(kerbau.run());
 console.log();
