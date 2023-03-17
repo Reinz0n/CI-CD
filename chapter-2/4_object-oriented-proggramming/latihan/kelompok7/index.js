@@ -1,15 +1,38 @@
-class KendaraanDarat {
+class Hewan {
     constructor(data){
-        if(this.constructor === KendaraanDarat){
-            throw new Error ("tidak bisa melakukan instace pada kelas Animal")
+        if(this.constructor === Hewan){
+            throw new Error ("tidak bisa melakukan instace pada kelas hewan")
         }
-    this.jumlah_roda = data.jumlah_roda; 
-    this.bahan_bakar = data.bahan_bakar;
-    this.tipePenggerak = data.tipePenggerak;
+    this.gender = data.gender;
+    this.habitat = data.habitat;
     }
 
     road(){
-        console.log(`${this.constructor.name} sedang berlajan`)
+        console.log(`ini adalah ${this.constructor.name}`)
     }
 
 }
+
+const Mamalia = (Base) =>
+  class extends Base {
+    kategori() {
+      console.log(`${this.constructor.name} adalah hewan mamalia`);
+    }
+  };
+
+const karnivora = (Base) =>
+  class extends Base {
+    shoot() {
+      console.log(`${this.constructor.name} memakan daging`);
+    }
+  };
+
+  class Sapi extends PublicServer(Human) {
+    constructor(props) {
+      super(props);
+    }
+    work() {
+      super.work();
+      super.save();
+    }
+  }
