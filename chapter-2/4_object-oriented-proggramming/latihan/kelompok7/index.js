@@ -76,6 +76,14 @@ let sapiFerdie = new Sapi({
 
 sapiFerdie.start();
 
+let harimauRisky = new Harimau({
+  gender : "laki-laki",
+  habitat: "darat"
+})
+
+console.log("")
+harimauRisky.start();
+
 let KelelawarPiter = new Kelelawar({
     gender : "perempuan",
     habitat: "udara"
