@@ -22,5 +22,36 @@ class Laptop {
             console.log(`${this.brand} ${this.type} Is On!`);
         }
     }
+
+class LaptopGaming extends gamingCapability(Laptop) {
+  constructor(props) {
+    super(props);
+  }
+
+  run() {
+    super.run();
+    super.gaming();
+  }
+}
+class LaptopEditing extends editingCapability(Laptop) {
+  constructor(props) {
+    super(props);
+  }
+
+  run() {
+    super.run();
+    super.editing();
+  }
+}
+
+class LaptopHybrid extends gamingCapability(editingCapability(Laptop)) {
+  constructor(props) {
+    super(props);
+  }
+  run() {
+    super.run();
+    super.editing();
+  }
+}
     
 
