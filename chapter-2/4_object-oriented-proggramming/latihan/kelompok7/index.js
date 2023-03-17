@@ -7,7 +7,7 @@ class Hewan {
     this.habitat = data.habitat;
     }
 
-    road(){
+    introduce(){
         console.log(`ini adalah ${this.constructor.name}`)
     }
 
@@ -22,17 +22,65 @@ const Mamalia = (Base) =>
 
 const karnivora = (Base) =>
   class extends Base {
-    shoot() {
+    type() {
       console.log(`${this.constructor.name} memakan daging`);
     }
   };
 
-  class Sapi extends PublicServer(Human) {
-    constructor(props) {
-      super(props);
+  const Terbang = (Base) =>
+  class extends Base {
+    fly() {
+      console.log(`${this.constructor.name} bisa terbang`);
     }
-    work() {
-      super.work();
-      super.save();
+  };
+
+  class Sapi extends Mamalia(Hewan) {
+    constructor(data) {
+      super(data);
+    }
+    start() {
+      super.introduce();
+      super.kategori();
     }
   }
+
+  class Harimau extends Mamalia(karnivora(Hewan)){
+    constructor(data) {
+        super(data);
+      }
+
+      start() {
+        super.introduce();
+        super.kategori();
+        super.type();
+      }
+    }
+
+    class Kelelawar extends Mamalia(karnivora(Terbang(Hewan))){
+        constructor(data) {
+            super(data);
+          }
+    
+          start() {
+            super.introduce();
+            super.kategori();
+            super.type();
+            super.fly();
+    }
+}
+
+let sapiFerdie = new Sapi({
+    gender : "laki-laki",
+    habitat: "darat"
+})
+
+sapiFerdie.start();
+
+let KelelawarPiter = new Kelelawar({
+    gender : "perempuan",
+    habitat: "udara"
+})
+
+console.log("")
+KelelawarPiter.start();
+    
