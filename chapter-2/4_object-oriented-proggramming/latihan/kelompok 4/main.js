@@ -83,4 +83,5 @@ console.log('==============================');
 console.log(Asus);
 Asus.gaming();
 Asus.editing();
+
 console.log('==============================\n');
