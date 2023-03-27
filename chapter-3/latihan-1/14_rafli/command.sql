@@ -1,21 +1,21 @@
 CREATE TABLE products(
   id BIGSERIAL PRIMARY KEY,
-  name VARCHAR(100),
+  name VARCHAR(100) NOT NULL,
   description VARCHAR(100),
   stock INT
 );
 
 CREATE TABLE customers(
   id BIGSERIAL PRIMARY KEY,
-  name VARCHAR(100),
+  name VARCHAR(100) NOT NULL,
   address TEXT
 );
 
 CREATE TABLE transcation(
   id BIGSERIAL PRIMARY KEY,
-  product_id INT,
-  customer_id INT,
-  qty INT
+  product_id INT NOT NULL,
+  customer_id INT NOT NULL,
+  qty INT NOT NULL
 );
 
 INSERT INTO products (name, description, stock) VALUES
