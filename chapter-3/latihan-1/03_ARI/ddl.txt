@@ -1,0 +1,27 @@
+
+postgres=# \c blog_binar
+You are now connected to database "blog_binar" as user "postgres".
+create database toko;
+CREATE DATABASE
+postgres=# \c toko
+You are no connected to database "toko" as user "postgres".
+toko=# CREATE TABLE products (
+toko(#   id BIGSERIAL PRIMARY KEY,
+toko(#   name VARCHAR(50) not null,
+toko(#   description TEXT not null,
+toko(#   stock INT not null
+toko(# );
+CREATE TABLE
+toko=# CREATE TABLE customers (
+toko(#   id BIGSERIAL PRIMARY KEY,
+toko(#   name VARCHAR(50) not null,
+toko(#   address TEXT not null
+toko(# );
+CREATE TABLE
+toko=# CREATE TABLE transactions (
+toko(#   id BIGSERIAL PRIMARY KEY,
+toko(#   product_id INT not null,
+toko(#   customer_id INT not null,
+toko(#   quantity INT not null,
+toko(# );
+CREATE TABLE
