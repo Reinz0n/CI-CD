@@ -34,8 +34,8 @@
    $$;
    ```
 
-4. lanjutan query
-   example :
+4. Join Query
+   Example :
 
    ```sql
    -- mencari jumlah like sebuah video
@@ -72,3 +72,65 @@
    order by
    channels.id;
    ```
+
+5. Subquery
+   Example:
+   ```sql
+   select
+   users.name as nama_user,
+   (
+     select
+         count(*)
+     from
+         channel_subscribers
+     where
+         channel_subscribers.user_id = users.id
+   ) as channel_yang_diikuti,
+   channels.name as nama_channel,
+   (
+     select
+         count(*)
+     from
+         channel_subscribers
+     where
+         channel_subscribers.channel_id = channels.id
+   ) as pengikut_channel
+   from
+   users
+   left join channels on channels.user_id = users.id
+   ```
+6. CTE (Common Table Expression)
+   Example:
+   ```sql
+   with subscribers as (
+    select
+        channel_subscribers.channel_id,
+        count(*)
+    from
+        channel_subscribers
+    group by
+        channel_subscribers.channel_id
+   ), subscribes as (
+     select
+        channel_subscribers.user_id,
+        count(*)
+    from
+        channel_subscribers
+    group by
+         channel_subscribers.user_id
+   )
+   select
+    users.name as nama_user,
+    subscribes.count as channel_yang_diikuti,
+    channels.name as nama_channel,
+    subscribers.count as pengikut_channel
+   from
+    users
+    left join channels on channels.user_id = users.id
+    left join subscribes on subscribes.user_id = users.id
+    left join subscribers on subscribers.channel_id = channels.id
+   ```
+
+```
+
+```
