@@ -59,3 +59,20 @@ Output :
 (9 rows)
 
 
+
+
+
+4. Tampilkan data channel yang diikuti users, dan juga jumlah subscribers jika user memiliki channel
+
+output :
+
+    nama_user    | channel_yang_diikuti |      nama_channel      | pengikut_channel
+-----------------+----------------------+------------------------+------------------
+ deddy corbuzier |                      | close the door podcast |                3
+ aldo ditario    |                      | detective aldo         |                2
+ chandra liow    |                    1 | tim 2 one              |                2
+ tatang          |                    2 |                        |
+ irji            |                    2 |                        |
+ fais            |                    2 |                        |
+(6 rows)
+
