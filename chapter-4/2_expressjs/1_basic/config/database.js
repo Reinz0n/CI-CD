@@ -15,4 +15,6 @@ const client = new Client({
     port: PGPORT,
 });
 
+client.connect();
+
 module.exports = client;
