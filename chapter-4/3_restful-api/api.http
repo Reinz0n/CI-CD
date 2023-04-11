@@ -1,0 +1,35 @@
+
+// Home
+GET http://localhost:8000
+
+
+### Get all posts
+GET http://localhost:8000/posts
+
+
+### Get detail posts
+GET http://localhost:8000/posts/3
+
+
+### Create post data
+POST http://localhost:8000/posts
+Content-Type: application/json
+
+{
+    "title": "Reksa Dana 5",
+    "body": "Cara menabung untuk pemula"
+}
+
+
+### Update post data
+PUT http://localhost:8000/posts/1
+Content-Type: application/json
+{
+    // "title": "Ganti judul"
+     "body": "Ganti body"
+}
+
+
+### Delete post data
+DELETE  http://localhost:8000/posts/3
+
