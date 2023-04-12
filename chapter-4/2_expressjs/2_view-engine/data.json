@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "deddy corbuzier",
+      "email": "deddy@gmail.com",
+      "password": "password"
+    },
+    {
+      "id": "2",
+      "name": "aldo ditario",
+      "email": "aldo@gmail.com",
+      "password": "password"
+    },
+    {
+      "id": "3",
+      "name": "chandra liow",
+      "email": "chandra@gmail.com",
+      "password": "password"
+    },
+    {
+      "id": "4",
+      "name": "tatang",
+      "email": "tatang@mail.com",
+      "password": "password"
+    },
+    {
+      "id": "5",
+      "name": "irji",
+      "email": "irji@mail.com",
+      "password": "password"
+    },
+    {
+      "id": "7",
+      "name": "angel",
+      "email": "angel@gmail.com",
+      "password": "password"
+    },
+    {
+      "id": "13",
+      "name": "joko",
+      "email": "joko@gmail.com",
+      "password": "password"
+    },
+    {
+      "id": "8",
+      "name": "ajeng",
+      "email": "undefined",
+      "password": "password"
+    },
+    {
+      "id": "6",
+      "name": "irji",
+      "email": "fais@mail.com",
+      "password": "Login123"
+    }
+  ]
+}

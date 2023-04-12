@@ -1,0 +1,15 @@
+{
+	"next_post_id": 6,
+	"posts": [
+		{
+			"id": 4,
+			"title": "Reksa Dana 3",
+			"body": "Cara menabung untuk pemula"
+		},
+		{
+			"id": 5,
+			"title": "Reksa Dana 5",
+			"body": "Cara menabung untuk pemula"
+		}
+	]
+}
