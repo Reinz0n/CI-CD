@@ -1,0 +1,27 @@
+
+POST http://localhost:3000/videos
+Content-Type: application/json
+
+{
+    "title" : "mukbang ayam bakar",
+    "description" : "memakan ayam bakar spicy",
+    "channel_id" : 3
+}
+
+###
+GET  http://localhost:3000/videos
+
+###
+GET  http://localhost:3000/videos/2
+
+###
+PUT  http://localhost:3000/videos/1
+Content-Type: application/json
+
+{
+    "description" : "memakan ayam goreng original"
+}
+
+###
+DELETE http://localhost:3000/videos/4
+Content-Type: application/json
