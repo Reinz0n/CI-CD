@@ -1,0 +1,36 @@
+GET https://jsonplaceholder.typicode.com/channels
+
+###
+POST https://jsonplaceholder.typicode.com/channels
+Content-Type: application/json
+
+{
+    "title" : "ini adalah percobaan"
+}
+
+###
+POST http://localhost:3000/channels
+Content-Type: application/json
+
+{
+    "name" : "amat",
+    "description" : "ini amat"
+}
+
+###
+GET  http://localhost:3000/channels
+
+###
+GET  http://localhost:3000/channels/1
+
+###
+PUT  http://localhost:3000/channels/2
+Content-Type: application/json
+
+{
+    "name" : "umar"
+}
+
+###
+DELETE http://localhost:3000/channels/1
+Content-Type: application/json
