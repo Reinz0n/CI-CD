@@ -41,18 +41,36 @@ showDetail : async (req,res,next) => {
 
 store : async (req,res,next) => {
     try {
-        const {name, description} = req.body;
+        const {user_id, name, description} = req.body;
 
-        const channels = await channel.create({
-            name: name,
-            description : description
-        })
-        
-        return res.status(201).json({
-            status : true,
-            message: "succes",
-            data : channels
-        })
+            if (!user_id || !name) {
+                return res.status(400).json({
+                    status: false,
+                    message: 'user_id and name is required!',
+                    data: null
+                });
+            }
+
+            const user = await user.findOne({where: {id: user_id}});
+            if (!user) {
+                return res.status(404).json({
+                    status: false,
+                    message: `can't find user with id ${user_id}`,
+                    data: null
+                });
+            }
+
+            const video = await Video.create({
+                user_id: user_id,
+                name: name,
+                description: description
+            });
+
+            return res.status(201).json({
+                status: true,
+                message: 'success',
+                data: video
+            });
     } catch (err) {
         next(err);
     }
