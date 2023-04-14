@@ -1,4 +1,5 @@
 const {video} = require("../models")
+const {channel}= require('../models');
 module.exports = {
 
 index : async (req,res,next) => {
@@ -51,8 +52,8 @@ store : async (req,res,next) => {
                 });
             }
 
-            const channel = await Channel.findOne({where: {id: channel_id}});
-            if (!channel) {
+            const channels = await channel.findOne({where: {id: channel_id}});
+            if (!channels) {
                 return res.status(404).json({
                     status: false,
                     message: `can't find channel with id ${channel_id}`,

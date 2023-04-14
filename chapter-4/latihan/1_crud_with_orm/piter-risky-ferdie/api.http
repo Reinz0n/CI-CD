@@ -13,8 +13,8 @@ POST http://localhost:3000/channels
 Content-Type: application/json
 
 {
-    "name" : "amat",
-    "description" : "ini amat"
+    "name" : "ini podcast",
+    "description" : "tes"
 }
 
 ###

@@ -1,4 +1,5 @@
-const {channel} = require("../models")
+const {channel} = require("../models");
+const {user} = require("../models")
 module.exports = {
 
 index : async (req,res,next) => {
@@ -51,8 +52,8 @@ store : async (req,res,next) => {
                 });
             }
 
-            const user = await user.findOne({where: {id: user_id}});
-            if (!user) {
+            const users = await user.findOne({where: {id: user_id}});
+            if (!users) {
                 return res.status(404).json({
                     status: false,
                     message: `can't find user with id ${user_id}`,
@@ -60,7 +61,7 @@ store : async (req,res,next) => {
                 });
             }
 
-            const video = await Video.create({
+            const channels = await channel.create({
                 user_id: user_id,
                 name: name,
                 description: description
@@ -69,7 +70,7 @@ store : async (req,res,next) => {
             return res.status(201).json({
                 status: true,
                 message: 'success',
-                data: video
+                data: channels
             });
     } catch (err) {
         next(err);
