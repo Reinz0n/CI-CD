@@ -61,7 +61,7 @@ store : async (req,res,next) => {
                 });
             }
 
-            const video = await video.create({
+            const videos = await video.create({
                 channel_id: channel_id,
                 title: title,
                 description: description
@@ -70,7 +70,7 @@ store : async (req,res,next) => {
             return res.status(201).json({
                 status: true,
                 message: 'success',
-                data: video
+                data: videos
             });
     } catch (err) {
         next(err);
