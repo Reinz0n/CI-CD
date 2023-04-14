@@ -2,19 +2,26 @@ const express = require('express');
 const router = express.Router();
 const channel = require('../controller/channel');
 const video = require('../controller/video');
+const user = require('../controller/user');
 
 router.get('/', (req, res) => res.status(200).json({message: "welcome to blog api"}));
 
-router.get('/channels', channel.index); // get all channel
-router.get('/channels/:channel_id', channel.show); // get detail channel
-router.post('/channels', channel.store); // create new channel
-router.put('/channels/:channel_id', channel.update); // update channel
-router.delete('/channels/:channel_id', channel.destroy); // delete channel
+router.get('/channels', channel.index);
+router.get('/channels/:channel_id', channel.show);
+router.post('/channels', channel.store);
+router.put('/channels/:channel_id', channel.update);
+router.delete('/channels/:channel_id', channel.destroy);
 
-router.get('/videos', video.index); // get all video
-router.get('/videos/:video_id', video.show); // get detail video
-router.post('/videos', video.store); // create new video
-router.put('/videos/:video_id', video.update); // update video
-router.delete('/videos/:video_id', video.destroy); // delete video
+router.get('/users', user.index);
+router.get('/users/:user_id', user.show);
+router.post('/users', user.store);
+router.put('/users/:user_id', user.update);
+router.delete('/users/:user_id', user.destroy);
+
+router.get('/videos', video.index);
+router.get('/videos/:video_id', video.show);
+router.post('/videos', video.store);
+router.put('/videos/:video_id', video.update);
+router.delete('/videos/:video_id', video.destroy);
 
 module.exports = router;

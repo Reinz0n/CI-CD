@@ -1,14 +1,14 @@
-const {Channel, User} = require('../models');
+const {User} = require('../models');
 
 module.exports = {
     index: async (req, res, next) => {
         try {
-            const channels = await Channel.findAll();
+            const users = await User.findAll();
 
             return res.status(200).json({
                 status: true,
                 message: 'success',
-                data: channels
+                data: users
             });
         } catch (error) {
             next(err);
@@ -17,40 +17,10 @@ module.exports = {
 
     show: async (req, res, next) => {
         try {
-            const {channel_id} = req.params;
-
-            const channel = await Channel.findOne({where: {id: channel_id}});
-            if (!channel) {
-                return res.status(404).json({
-                    status: false,
-                    message: `can't find channel with id ${channel_id}!`,
-                    data: null
-                });
-            }
-
-            return res.status(200).json({
-                status: true,
-                message: 'success',
-                data: channel
-            });
-        } catch (error) {
-            next(error);
-        }
-    },
-
-    store: async (req, res, next) => {
-        try {
-            const {name, description, user_id} = req.body;
-            if (!name || !user_id) {
-                return res.status(400).json({
-                    status: false,
-                    message: `name and user_id is required!`,
-                    data: null
-                });
-            }
-
+            const {user_id} = req.params;
 
             const user = await User.findOne({where: {id: user_id}});
+
             if (!user) {
                 return res.status(404).json({
                     status: false,
@@ -59,12 +29,30 @@ module.exports = {
                 });
             }
 
-            const channel = await Channel.create({name, description, user_id});
+            return res.status(200).json({
+                status: true,
+                message: 'success',
+                data: user
+            });
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    store: async (req, res, next) => {
+        try {
+            const {name, email, password} = req.body;
+
+            const user = await User.create({
+                name: name,
+                email: email,
+                password: password,
+            });
 
             return res.status(201).json({
                 status: true,
                 message: 'success',
-                data: channel
+                data: user
             });
         } catch (error) {
             next(error);
@@ -73,14 +61,14 @@ module.exports = {
 
     update: async (req, res, next) => {
         try {
-            const {channel_id} = req.params;
+            const {user_id} = req.params;
 
-            const updated = await Channel.update(req.body, {where: {id: channel_id}});
+            const updated = await User.update(req.body, {where: {id: user_id}});
 
             if (updated[0] == 0) {
                 return res.status(404).json({
                     status: false,
-                    message: `can't find channel with id ${channel_id}!`,
+                    message: `can't find user with id ${user_id}!`,
                     data: null
                 });
             }
@@ -97,14 +85,14 @@ module.exports = {
 
     destroy: async (req, res, next) => {
         try {
-            const {channel_id} = req.params;
+            const {user_id} = req.params;
 
-            const deleted = await Channel.destroy({where: {id: channel_id}});
+            const deleted = await User.destroy({where: {id: user_id}});
 
             if (!deleted) {
                 return res.status(404).json({
                     status: false,
-                    message: `can't find channel with id ${channel_id}!`,
+                    message: `can't find user with id ${user_id}!`,
                     data: null
                 });
             }
