@@ -1,0 +1,11 @@
+Buat Relasi Baru:
+- Many-to-Many (User,Video -> comment)
+- One-to-Many (Playlist,Video -> playlist)
+
+Model Baru
+- Playlist
+- Comment
+
+Endpoint Baru:
+- CRUD playlist
+- comment video
