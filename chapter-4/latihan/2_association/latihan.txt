@@ -9,3 +9,12 @@ Model Baru
 Endpoint Baru:
 - CRUD playlist
 - comment video
+
+Members:
+1. Ferdie, Aher, Fitri
+2. Dias, Hafizh, Piter
+3. Daffa, Aldy, Syaifun
+4. Yoga, Nugraha, Yasir
+5. Rafli, Tantri, Ijal
+6. Rivan, Ukasah, Fitrah
+7. Aufa, Rico, Ari, Rizky
