@@ -4,7 +4,15 @@ const user = require('./user');
 module.exports = {
     index: async (req, res, next) => {
         try {
-            const channels = await Channel.findAll();
+            const channels = await Channel.findAll({
+                include: [
+                    {
+                      model: Playlist,
+                      as: "channel-playlist"
+                    },
+                  ],
+                  order: [["id", "ASC"]],
+            });
 
             return res.status(200).json({
                 status: true,

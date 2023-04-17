@@ -3,6 +3,7 @@ const router = express.Router();
 const channel = require('../controller/channel');
 const video = require('../controller/video');
 const user = require('../controller/user');
+const playlist = require('../controller/playlist');
 
 router.get('/', (req, res) => res.status(200).json({message: "welcome to blog api"}));
 
@@ -26,5 +27,12 @@ router.post('/videos', video.store);
 router.put('/videos/:video_id', video.update);
 router.delete('/videos/:video_id', video.destroy);
 router.post('/videos/comment', video.comment);
+
+router.get('/playlist', playlist.index);
+router.get('/playlist/:playlist_id', playlist.show);
+router.post('/playlist', playlist.store);
+router.put('/playlist/:playlist_id', playlist.update);
+router.delete('/playlist/:playlist_id', playlist.destroy);
+router.post('/playlist/video', playlist.addPlaylistVideo);
 
 module.exports = router;

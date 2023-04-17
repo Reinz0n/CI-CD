@@ -1,41 +1,44 @@
-const {User, Channel} = require('../models');
+const {Playlist, Channel, Video, PlaylistVideo} = require('../models');
 
 module.exports = {
     index: async (req, res, next) => {
         try {
-            const users = await User.findAll();
+            const playlist = await Playlist.findAll({
+                include: [
+                    {
+                        model: Video,
+                        attributes: ['title', 'channel_id', 'description']
+                    }
+                ]
+            });
 
             return res.status(200).json({
                 status: true,
                 message: 'success',
-                data: users
+                data: playlist
             });
         } catch (error) {
-            next(err);
+            next(error);
         }
     },
 
     show: async (req, res, next) => {
         try {
-            const {user_id} = req.params;
+            const {playlist_id} = req.params;
 
-            const user = await User.findOne({
-                where: {id: user_id}, include: [
+            const playlist = await Playlist.findOne({
+                where: {id: playlist_id}, include: [
                     {
                         model: Channel,
-                        as: 'channel',
                         attributes: ['name', 'description']
-                    },
-                    {
-                        model: Channel,
-                        as: 'subscribes'
                     }
                 ]
             });
-            if (!user) {
+            
+            if (!playlist) {
                 return res.status(404).json({
                     status: false,
-                    message: `can't find user with id ${user_id}!`,
+                    message: `can't find playlist with id ${playlist_id}!`,
                     data: null
                 });
             }
@@ -43,7 +46,7 @@ module.exports = {
             return res.status(200).json({
                 status: true,
                 message: 'success',
-                data: user
+                data: playlist
             });
         } catch (error) {
             next(error);
@@ -52,18 +55,41 @@ module.exports = {
 
     store: async (req, res, next) => {
         try {
-            const {name, email, password} = req.body;
+            const {name, description, channel_id} = req.body;
 
-            const user = await User.create({
-                name: name,
-                email: email,
-                password: password,
-            });
+            const channel = Channel.findOne({where: {id: channel_id}})
+            const playlist = Playlist.findOne({where: {name, channel_id}})
+
+            if (!channel) {
+                return res.status(404).json({
+                    status: false,
+                    message: `can't find channel with id ${channel_id}`
+                })
+            }
+
+            if (!name || !channel_id) {
+                return res.status(400).json({
+                    status: false,
+                    message: 'name and channel_id are required'
+                })
+            }
+
+            if (playlist) {
+                return res.status(400).json({
+                    status: false,
+                    message: `${name}'s playlist already exist in channel with id ${channel_id}`
+                })
+            }
+
+            const data = Playlist.create({
+                name,
+                description,
+                channel_id
+            })
 
             return res.status(201).json({
                 status: true,
                 message: 'success',
-                data: user
             });
         } catch (error) {
             next(error);
@@ -72,22 +98,21 @@ module.exports = {
 
     update: async (req, res, next) => {
         try {
-            const {user_id} = req.params;
-
-            const updated = await User.update(req.body, {where: {id: user_id}});
+            const {playlist_id} = req.params;            
+            const updated = await Playlist.update(req.body, {where: {id: playlist_id}});
 
             if (updated[0] == 0) {
                 return res.status(404).json({
                     status: false,
-                    message: `can't find user with id ${user_id}!`,
+                    message: `can't find playlist with id ${playlist_id}!`,
                     data: null
                 });
             }
-
+            
             return res.status(201).json({
                 status: true,
                 message: 'success',
-                data: null
+                data: updated
             });
         } catch (error) {
             next(error);
@@ -96,14 +121,14 @@ module.exports = {
 
     destroy: async (req, res, next) => {
         try {
-            const {user_id} = req.params;
+            const {playlist_id} = req.params;
 
-            const deleted = await User.destroy({where: {id: user_id}});
+            const deleted = await Playlist.destroy({where: {id: playlist_id}});
 
             if (!deleted) {
                 return res.status(404).json({
                     status: false,
-                    message: `can't find user with id ${user_id}!`,
+                    message: `can't find playlist with id ${playlist_id}!`,
                     data: null
                 });
             }
@@ -115,6 +140,50 @@ module.exports = {
             });
         } catch (error) {
             next(error);
+        }
+    },
+
+    addPlaylistVideo: async (req, res, next) => {
+        try {
+            const { playlist_id, video_id } = req.body;
+
+            if ( !playlist_id || !video_id ) {
+                return res.status(400).json({
+                    stasus: false,
+                    message: 'playlist_id and video_id are required.'
+                })
+            }
+
+            const playlist = await Playlist.findOne({where: {id: playlist_id}});
+            const video = await Video.findOne({where: {id: video_id}});
+            const data = await PlaylistVideo.findOne({where: {playlist_id, video_id}});
+
+            if ( !playlist || !video ) {
+                return res.status(404).json({
+                    status: false,
+                    message: 'playlist or video not found',
+                    data: null
+                })
+            }
+
+            if (data) {
+                return res.status(400).json({
+                    status: false,
+                    message: `video with id ${video_id} already exist in the playlist`
+                })
+            }
+
+            const create = await PlaylistVideo.create({
+                playlist_id,
+                video_id
+            })
+
+            return res.status(200).json({
+                status: true,
+                message: 'video added.'
+            })
+        } catch (error) {
+            next(error)
         }
     }
 };

@@ -10,10 +10,20 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      // one to many -> channel
+      models.Playlist.belongsTo(models.Channel, {
+        foreignKey: 'id'
+      });
+
+      // many to many -> video
+      models.Playlist.belongsToMany(models.Video, {
+        through: models.PlaylistVideo,
+        foreignKey: "playlist_id"
+      })
     }
   }
   Playlist.init({
+    channel_id: DataTypes.STRING,
     name: DataTypes.STRING,
     description: DataTypes.TEXT
   }, {

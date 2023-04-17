@@ -17,6 +17,12 @@ module.exports = (sequelize, DataTypes) => {
 
       // relasi many-to-many -> user
       Video.belongsToMany(models.User, {foreignKey: 'video_id', as: 'comments', through: models.Comment});
+
+      // many to many -> playlist
+      models.Video.belongsToMany(models.Playlist, {
+        through: models.PlaylistVideo,
+        foreignKey: "video_id"
+      })
     }
   }
   Video.init({
