@@ -1,14 +1,14 @@
-const {Channel, Video} = require('../models');
+const {User, Channel} = require('../models');
 
 module.exports = {
     index: async (req, res, next) => {
         try {
-            const videos = await Video.findAll();
+            const users = await User.findAll();
 
             return res.status(200).json({
                 status: true,
                 message: 'success',
-                data: videos
+                data: users
             });
         } catch (error) {
             next(err);
@@ -17,22 +17,25 @@ module.exports = {
 
     show: async (req, res, next) => {
         try {
-            const {video_id} = req.params;
+            const {user_id} = req.params;
 
-            const video = await Video.findOne({
-                where: {id: video_id}, include: [
+            const user = await User.findOne({
+                where: {id: user_id}, include: [
                     {
                         model: Channel,
                         as: 'channel',
-                        attributes: ['id', 'name', 'description']
+                        attributes: ['name', 'description']
+                    },
+                    {
+                        model: Channel,
+                        as: 'subscribes'
                     }
                 ]
             });
-
-            if (!video) {
+            if (!user) {
                 return res.status(404).json({
                     status: false,
-                    message: `can't find video with id ${video_id}!`,
+                    message: `can't find user with id ${user_id}!`,
                     data: null
                 });
             }
@@ -40,7 +43,7 @@ module.exports = {
             return res.status(200).json({
                 status: true,
                 message: 'success',
-                data: video
+                data: user
             });
         } catch (error) {
             next(error);
@@ -49,35 +52,18 @@ module.exports = {
 
     store: async (req, res, next) => {
         try {
-            const {channel_id, title, description} = req.body;
+            const {name, email, password} = req.body;
 
-            if (!channel_id || !title) {
-                return res.status(400).json({
-                    status: false,
-                    message: 'channel_id and title is required!',
-                    data: null
-                });
-            }
-
-            const channel = await Channel.findOne({where: {id: channel_id}});
-            if (!channel) {
-                return res.status(404).json({
-                    status: false,
-                    message: `can't find channel with id ${channel_id}`,
-                    data: null
-                });
-            }
-
-            const video = await Video.create({
-                channel_id: channel_id,
-                title: title,
-                description: description
+            const user = await User.create({
+                name: name,
+                email: email,
+                password: password,
             });
 
             return res.status(201).json({
                 status: true,
                 message: 'success',
-                data: video
+                data: user
             });
         } catch (error) {
             next(error);
@@ -86,14 +72,14 @@ module.exports = {
 
     update: async (req, res, next) => {
         try {
-            const {video_id} = req.params;
+            const {user_id} = req.params;
 
-            const updated = await Video.update(req.body, {where: {id: video_id}});
+            const updated = await User.update(req.body, {where: {id: user_id}});
 
             if (updated[0] == 0) {
                 return res.status(404).json({
                     status: false,
-                    message: `can't find video with id ${video_id}!`,
+                    message: `can't find user with id ${user_id}!`,
                     data: null
                 });
             }
@@ -110,14 +96,14 @@ module.exports = {
 
     destroy: async (req, res, next) => {
         try {
-            const {video_id} = req.params;
+            const {user_id} = req.params;
 
-            const deleted = await Video.destroy({where: {id: video_id}});
+            const deleted = await User.destroy({where: {id: user_id}});
 
             if (!deleted) {
                 return res.status(404).json({
                     status: false,
-                    message: `can't find video with id ${video_id}!`,
+                    message: `can't find user with id ${user_id}!`,
                     data: null
                 });
             }
@@ -132,4 +118,3 @@ module.exports = {
         }
     }
 };
-
