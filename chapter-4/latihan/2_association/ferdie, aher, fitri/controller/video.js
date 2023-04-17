@@ -1,4 +1,4 @@
-const {Channel, Video, Playlist, User, Comment} = require('../models');
+const {Channel, Video, Playlist, User} = require('../models');
 
 module.exports = {
     index: async (req, res, next) => {

@@ -56,9 +56,9 @@ POST http://localhost:8000/videos/comment
 Content-Type: application/json
 
 {
-    "user_id": 1,
+    "user_id": 3,
     "video_id": 1,
-    "data_comment": "tutorial javascript"
+    "data_comment": "tutorialny sangat bagus"
 }
 
 ### Update video data
@@ -71,7 +71,7 @@ Content-Type: application/json
 }
 
 ### Delete video data
-DELETE  http://localhost:8000/channels/1
+DELETE  http://localhost:8000/videos/2
 
 
 ### Create user
