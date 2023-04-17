@@ -25,6 +25,10 @@ module.exports = {
                         model: Channel,
                         as: 'channel',
                         attributes: ['id', 'name', 'description']
+                    },
+                    {
+                        model: User,
+                        as: 'comments'
                     }
                 ]
             });

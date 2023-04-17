@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
 
       // relase many-to-many -> channel
       User.belongsToMany(models.Channel, {foreignKey: 'user_id', as: 'subscribes', through: models.Subscription});
+
+      // relase many-to-many -> videp
+      User.belongsToMany(models.Video, {foreignKey: 'user_id', as: 'comments', through: models.Comment});
     }
   }
   User.init({
