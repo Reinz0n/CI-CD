@@ -1,10 +1,10 @@
 Buat Relasi Baru:
 - Many-to-Many (User,Video -> comment)
-- One-to-Many (Channel,Playlist -> ChannelPlaylist)
+- One-to-Many (Channel,Playlist -> playlist)
 - Many-to-Many (Playlist,Video -> PlaylistVideo)
 
 Model Baru
-- ChannelPlaylist
+- Playlist -> name, description, channel_id
 - PlaylistVideo
 - Comment
 
