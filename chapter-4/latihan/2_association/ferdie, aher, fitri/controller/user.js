@@ -32,7 +32,7 @@ module.exports = {
                     },
                     {
                         model: Video,
-                        as: 'comment'
+                        as: 'comments'
                     }
                 ]
             });
