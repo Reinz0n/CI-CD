@@ -19,7 +19,15 @@ module.exports = {
         try {
             const {video_id} = req.params;
 
-            const video = await Video.findOne({where: {id: video_id}});
+            const video = await Video.findOne({
+                where: {id: video_id}, include: [
+                    {
+                        model: Channel,
+                        as: 'channel',
+                        attributes: ['id', 'name', 'description']
+                    }
+                ]
+            });
 
             if (!video) {
                 return res.status(404).json({

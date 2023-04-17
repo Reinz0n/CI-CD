@@ -10,7 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      // relasi one-to-one -> channel
+      User.hasOne(models.Channel, {foreignKey: 'user_id', as: 'channel'});
+
+      // relase many-to-many -> channel
+      User.belongsToMany(models.Channel, {foreignKey: 'user_id', as: 'subscribes', through: models.Subscription});
     }
   }
   User.init({

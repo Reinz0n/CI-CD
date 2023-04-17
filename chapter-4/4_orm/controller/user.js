@@ -1,4 +1,4 @@
-const {User} = require('../models');
+const {User, Channel} = require('../models');
 
 module.exports = {
     index: async (req, res, next) => {
@@ -19,8 +19,19 @@ module.exports = {
         try {
             const {user_id} = req.params;
 
-            const user = await User.findOne({where: {id: user_id}});
-
+            const user = await User.findOne({
+                where: {id: user_id}, include: [
+                    {
+                        model: Channel,
+                        as: 'channel',
+                        attributes: ['name', 'description']
+                    },
+                    {
+                        model: Channel,
+                        as: 'subscribes'
+                    }
+                ]
+            });
             if (!user) {
                 return res.status(404).json({
                     status: false,

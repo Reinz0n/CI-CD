@@ -11,6 +11,8 @@ router.get('/channels/:channel_id', channel.show);
 router.post('/channels', channel.store);
 router.put('/channels/:channel_id', channel.update);
 router.delete('/channels/:channel_id', channel.destroy);
+router.post('/channels/subscribe', channel.subscribe);
+router.delete('/channels/unsubscribe', channel.unsubscribe);
 
 router.get('/users', user.index);
 router.get('/users/:user_id', user.show);
