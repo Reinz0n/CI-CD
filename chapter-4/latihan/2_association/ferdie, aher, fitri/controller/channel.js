@@ -42,6 +42,10 @@ module.exports = {
                     {
                         model: User,
                         as: 'subscribers'
+                    },
+                    {
+                        model: Playlist,
+                        as: 'channel-playlist'
                     }
                 ]
             });
