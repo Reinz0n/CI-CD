@@ -1,0 +1,133 @@
+
+GET http://localhost:8000
+
+###
+GET http://localhost:8000/channels
+
+### Get detail channels
+GET http://localhost:8000/channels/2
+
+### Create channel data
+POST http://localhost:8000/channels
+Content-Type: application/json
+
+{
+    "name": "Podcast Coding",
+    "description": "ngomongin koding",
+    "user_id":1
+}
+
+### Update channel data
+PUT http://localhost:8000/channels/1
+Content-Type: application/json
+
+{
+    "name": "Ganti judul"
+    // "description": "Ganti description"
+}
+
+### Delete channel data
+DELETE  http://localhost:8000/channels/2
+
+
+
+
+// VIDEO api
+GET http://localhost:8000
+
+###
+GET http://localhost:8000/videos
+
+### Get detail videos
+GET http://localhost:8000/videos/1
+
+### Create video data
+POST http://localhost:8000/videos
+Content-Type: application/json
+
+{
+    "channel_id": 1,
+    "title": "mengemudi",
+    "description": "Cara megemudi untuk pemula"
+}
+
+### Update video data
+PUT http://localhost:8000/videos/1
+Content-Type: application/json
+
+{
+    "title": "Ganti judul"
+    // "description": "Ganti description"
+}
+
+### Delete video data
+DELETE  http://localhost:8000/videos/1
+
+
+### Create user
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "name": "Sabrina",
+    "email": "sabrina@mail.com",
+    "password": "password123"
+}
+
+### List user
+GET http://localhost:8000/users
+
+### Get user
+GET http://localhost:8000/users/1
+
+
+
+
+### Create comment video
+POST http://localhost:8000/videos/comment
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "video_id": 1,
+    "data_comment": "belajar mengemudi"
+}
+
+
+// PLAYLIST
+
+### Get playlist
+GET http://localhost:8000/playlist
+
+### Post playlist
+POST http://localhost:8000/playlist
+Content-Type: application/json
+
+{
+    "name": "wali band",
+    "description": "cari jodoh",
+    "channel_id": 1
+}
+
+### ADD PlaylistVideo
+POST http://localhost:8000/playlist/video
+Content-Type: application/json
+
+{
+    "playlist_id": 1,
+    "video_id": 1
+}
+
+### Update playlist
+PUT http://localhost:8000/playlist/1
+Content-Type: application/json
+
+{
+    "description": "putar lagu"
+}
+
+### Get playlist by id
+GET http://localhost:8000/playlist/1
+
+### Delete playlist
+DELETE http://localhost:8000/playlist/2
