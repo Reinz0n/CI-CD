@@ -31,6 +31,9 @@ module.exports = {
                     {
                         model: Channel,
                         attributes: ['name', 'description']
+                    },
+                    {
+                        model: Video
                     }
                 ]
             });
@@ -57,8 +60,8 @@ module.exports = {
         try {
             const {name, description, channel_id} = req.body;
 
-            const channel = Channel.findOne({where: {id: channel_id}})
-            const playlist = Playlist.findOne({where: {name, channel_id}})
+            const channel = await Channel.findOne({where: {id: channel_id}})
+            const playlist = await Playlist.findOne({where: {name, channel_id}})
 
             if (!channel) {
                 return res.status(404).json({

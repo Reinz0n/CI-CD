@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       Channel.belongsToMany(models.User, {foreignKey: 'channel_id', as: 'subscribers', through: models.Subscription});
 
       // relasi one-to-many -> playlist
-      models.Channel.hasMany(models.Playlist, {foreignKey: 'channel_id', as: 'channel-playlist'});
+      Channel.hasMany(models.Playlist, {foreignKey: 'channel_id', as: 'channel-playlist'});
     }
   }
   Channel.init({

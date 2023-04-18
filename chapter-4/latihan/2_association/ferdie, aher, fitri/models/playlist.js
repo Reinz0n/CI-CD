@@ -11,19 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // one to many -> channel
-      models.Playlist.belongsTo(models.Channel, {
-        foreignKey: 'id'
+      Playlist.belongsTo(models.Channel, {
+        foreignKey: 'channel_id'
       });
 
       // many to many -> video
-      models.Playlist.belongsToMany(models.Video, {
+     Playlist.belongsToMany(models.Video, {
         through: models.PlaylistVideo,
         foreignKey: "playlist_id"
       })
     }
   }
   Playlist.init({
-    channel_id: DataTypes.STRING,
+    channel_id: DataTypes.INTEGER,
     name: DataTypes.STRING,
     description: DataTypes.TEXT
   }, {

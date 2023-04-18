@@ -16,13 +16,15 @@ module.exports = (sequelize, DataTypes) => {
       Video.belongsTo(models.Channel, {foreignKey: 'channel_id', as: 'channel'});
 
       // relasi many-to-many -> user
-      Video.belongsToMany(models.User, {foreignKey: 'video_id', as: 'comments', through: models.Comment});
+      // Video.belongsToMany(models.User, {foreignKey: 'video_id', as: 'comments', through: models.Comment});
 
       // many to many -> playlist
       models.Video.belongsToMany(models.Playlist, {
         through: models.PlaylistVideo,
         foreignKey: "video_id"
       })
+
+      Video.hasMany(models.Comment, {foreignKey: "video_id" ,as:"comment"})
     }
   }
   Video.init({
