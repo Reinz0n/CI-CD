@@ -7,7 +7,7 @@ info:
     email: itsme@tatang.dev
   version: 1.0.0
 servers:
-  - url: http://localhost:50050
+  - url: http://localhost:3000
     description: Test local computer
   - url: https://test.youtube-like.com
     description: Staging
@@ -156,3 +156,44 @@ paths:
                     example: email or password is invalid!
                   data: 
                     type: object
+  /whoami:
+    get:
+      tags:
+        - Auth
+      summary: Mendapatkan info user
+      description: Mendapatkan info user (desc)
+      operationId: get-whoami
+      # parameters:
+      #   - in: header
+      #     name: token
+      #     schema:
+      #       type: string
+      #     required: true
+      responses:
+        "200":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: object
+                    properties:
+                      user:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          name:
+                            type: string
+                            example: sabrina
+                          email:
+                            type: string
+                            example: sabrina@mail.com
