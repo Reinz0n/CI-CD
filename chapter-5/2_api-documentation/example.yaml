@@ -1,107 +1,158 @@
 openapi: 3.0.0
 info:
-  title: Swagger Petstore - OpenAPI 3.0
+  title: YouTube Like
   description: |-
-    Ini adalah contoh dokumentasi api
-  termsOfService: http://swagger.io/terms/
+    Aplikasi sederhana yang terinspirasi dari YouTube
   contact:
-    email: apiteam@swagger.io
+    email: itsme@tatang.dev
   version: 1.0.0
 servers:
-  - url: http://localhost:50050 
+  - url: http://localhost:50050
+    description: Test local computer
+  - url: https://test.youtube-like.com
+    description: Staging
+  - url: https://youtube-like.com
+    description: Production
 tags:
-  - name: aut
-    description: Everything about auth
-    externalDocs:
-      description: Find out more
-      url: http://swagger.io
+  - name: Auth
+    description: Proses Autentikasi
 paths:
-  /whoami:
-    get:
-      tags:
-        - auth
-      summary: Update an existing pet
-      description: Update an existing pet by Id
-      operationId: checktoken
-      responses:
-        "200":
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/User"
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Pet not found
-        "405":
-          description: Validation exception
-  /login:
+  /register:
     post:
       tags:
-        - auth
-      summary: Update an existing pet
-      description: Update an existing pet by Id
-      operationId: updatePet
+        - Auth
+      summary: Mendaftarkan User Baru
+      description: Mendaftarkan User Baru (desc)
+      operationId: post-register-user
       requestBody:
-        description: Update an existent pet in the store
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Auth"
-        required: true
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: sabrina
+                email:
+                  type: string
+                  example: sabrina@mail.com
+                password:
+                  type: string
+                  example: password123
       responses:
-        "200":
-          description: Successful operation
+        "201":
+          description: Success Register
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/User"
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: sabrina
+                      email:
+                        type: string
+                        example: sabrina@mail.com
         "400":
-          description: Invalid ID supplied
-        "404":
-          description: Pet not found
-        "405":
-          description: Validation exception
-
-components:
-  schemas:
-    Auth:
-      type: object
-      properties:
-        email:
-          type: string
-          example: sabrina@mail.com
-        password:
-          type: string
-          example: password123
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 10
-        name:
-          type: integer
-          format: int64
-          example: 198772
-        email:
-          type: integer
-          format: int32
-          example: 7
-        password:
-          type: string
-          format: date-time
-  requestBodies:
-    LoginRequest:
-      description: Login Object
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/User"
-  securitySchemes:
-    token:
-      type: apiKey
-      name: token
-      in: header
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: boolean
+                        example: false
+                      message:
+                        type: string
+                        example: email already used!
+                      data: 
+                        type: object
+                  - type: object
+                    properties:
+                      status:
+                        type: boolean
+                        example: false
+                      message:
+                        type: string
+                        example: name, email and password is required!
+                      data: 
+                        type: object
+              examples:
+                duplicated-email:
+                  summary: If email already used
+                  value:
+                    status: false
+                    message: email already used!
+                    data: {}
+                bad-request:
+                  summary: If required data is not provided
+                  value:
+                    status: false
+                    message: name, email and password is required!
+                    data: {}
+                    
+  /login:
+    post:
+      tags:
+        - Auth
+      summary: Mendapatkan token
+      description: Mendapatkan token (desc)
+      operationId: post-login-user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: sabrina@mail.com
+                password:
+                  type: string
+                  example: password123
+      responses:
+        "200":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: object
+                    properties:
+                      token:
+                        type: string
+        "400":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: email or password is invalid!
+                  data: 
+                    type: object
