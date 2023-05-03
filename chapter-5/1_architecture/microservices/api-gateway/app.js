@@ -6,6 +6,7 @@ const router = require('./routes');
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yaml');
 const fs = require('fs');
+
 const {
     HTTP_PORT = 3000
 } = process.env;

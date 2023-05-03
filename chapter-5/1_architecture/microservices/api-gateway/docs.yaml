@@ -1,22 +1,31 @@
-openapi: 3.0.1
+openapi: 3.0.0
 info:
-  title: YouTube API
-  description: Aplikasi mirip youtube
+  title: YouTube Like
+  description: |-
+    Aplikasi sederhana yang terinspirasi dari YouTube
   contact:
-    email: itsme@tatanga.dev
+    email: itsme@tatang.dev
   version: 1.0.0
 servers:
-  - url: http://localhost:50050
+  - url: http://localhost:3000
+    description: Test local computer
+  - url: https://test.youtube-like.com
+    description: Staging
+  - url: https://youtube-like.com
+    description: Production
 tags:
   - name: Auth
-    description: Everything about auth
+    description: Proses Autentikasi
+  - name: Channels
+    description: Channel Data
 paths:
   /register:
     post:
       tags:
         - Auth
-      summary: Mendaftarkan user baru (summary)
-      description: Mendaftarkan user baru (description)
+      summary: Mendaftarkan User Baru
+      description: Mendaftarkan User Baru (desc)
+      operationId: post-register-user
       requestBody:
         content:
           application/json:
@@ -27,28 +36,29 @@ paths:
                   type: string
                   example: sabrina
                 email:
-                 type: string
-                 example: sabrina@mail.com
+                  type: string
+                  example: sabrina@mail.com
                 password:
                   type: string
                   example: password123
       responses:
         "201":
-          description: Successful operation
+          description: Success Register
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  success:
+                  status:
                     type: boolean
                   message:
                     type: string
-                  data:
+                    example: success
+                  data: 
                     type: object
                     properties:
                       id:
-                        type: number
+                        type: integer
                         example: 1
                       name:
                         type: string
@@ -57,26 +67,52 @@ paths:
                         type: string
                         example: sabrina@mail.com
         "400":
-          description: Bad Request
+          description: Error from user
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Name, Email and Password must be provided
-                  data:
-                    type: object
+                oneOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: boolean
+                        example: false
+                      message:
+                        type: string
+                        example: email already used!
+                      data: 
+                        type: object
+                  - type: object
+                    properties:
+                      status:
+                        type: boolean
+                        example: false
+                      message:
+                        type: string
+                        example: name, email and password is required!
+                      data: 
+                        type: object
+              examples:
+                duplicated-email:
+                  summary: If email already used
+                  value:
+                    status: false
+                    message: email already used!
+                    data: {}
+                bad-request:
+                  summary: If required data is not provided
+                  value:
+                    status: false
+                    message: name, email and password is required!
+                    data: {}
+                    
   /login:
     post:
       tags:
         - Auth
-      summary: Masuk kedalam sistem (summary)
-      description: Masuk kedalam sistem (description)
+      summary: Mendapatkan token
+      description: Mendapatkan token (desc)
+      operationId: post-login-user
       requestBody:
         content:
           application/json:
@@ -90,34 +126,122 @@ paths:
                   type: string
                   example: password123
       responses:
-        "201":
-          description: Successful operation
+        "200":
+          description: Success Login
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  success:
+                  status:
                     type: boolean
                   message:
                     type: string
-                  data:
+                    example: success
+                  data: 
                     type: object
                     properties:
                       token:
                         type: string
         "400":
-          description: Bad Request
+          description: Error from user
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  success:
+                  status:
                     type: boolean
                     example: false
                   message:
                     type: string
-                    example: Email and Password is not valid
-                  data:
+                    example: email or password is invalid!
+                  data: 
                     type: object
+  /whoami:
+    get:
+      tags:
+        - Auth
+      summary: Mendapatkan info user
+      description: Mendapatkan info user (desc)
+      operationId: get-whoami
+      responses:
+        "200":
+          description: Success Validated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: object
+                    properties:
+                      user:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          name:
+                            type: string
+                            example: sabrina
+                          email:
+                            type: string
+                            example: sabrina@mail.com
+      security:
+        - jwt_token: []
+  /channels/{id}:
+    put:
+      tags:
+        - Channels
+      summary: Update channel data
+      description: Update channel data (desc)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: id of channel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Close The Door
+                description:
+                  type: string
+                  example: Podcast minta maaf
+      responses:
+        "200":
+          description: Success Validated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: integer
+                    example: 1
+      security:
+        - jwt_token: []
+components:
+  securitySchemes:
+    jwt_token:
+      type: apiKey
+      in: header
+      name: token
