@@ -2,22 +2,21 @@ const {Article} = require('../models');
 
 module.exports = {
     create: async (req, res, next) => {
+        return res.render('articles/create', {title: 'Create articles'});
+    },
+
+    store: async (req, res, next) => {
         try {
             const {title, body} = req.body;
             if (!title || !body) {
-                return res.status(400).json({
-                    status: false,
-                    message: 'title and body is required!',
-                    data: null
+                return res.render('error', {
+                    title: 'Article Detail',
+                    error: 'title and body is required!',
                 });
             }
 
-            const article = await Article.create({title, body});
-            return res.status(200).json({
-                status: true,
-                message: 'success',
-                data: article
-            });
+            await Article.create({title, body});
+            return res.redirect('/articles');
         } catch (err) {
             next(err);
         }
@@ -41,17 +40,15 @@ module.exports = {
             const {article_id} = req.params;
             const article = await Article.findOne({where: {id: article_id}});
             if (!article) {
-                return res.status(404).json({
-                    status: false,
-                    message: `article with id ${article_id} is doesn't exist!`,
-                    data: null
+                return res.render('error', {
+                    title: 'Article Detail',
+                    error: `article with id ${article_id} is doesn't exist!`,
                 });
             }
 
-            return res.status(200).json({
-                status: true,
-                message: 'success',
-                data: article
+            return res.render('articles/details', {
+                title: 'Article Detail',
+                article: article
             });
         } catch (err) {
             next(err);

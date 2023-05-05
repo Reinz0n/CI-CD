@@ -8,10 +8,15 @@
 
     <% articles.forEach((article) => { %>
     <div>
-      <p><b>title :</b> <%= article.title %></p>
+      <p>
+        <b>title :</b
+        ><a href="/articles/<%=article.id%>"> <%= article.title %></a>
+      </p>
       <p><b>body :</b> <%= article.body %></p>
       <p>------------------------------------</p>
     </div>
     <%})%>
+
+    <button><a href="/articles/create">Create Article</a></button>
   </body>
 </html>

@@ -9,7 +9,8 @@ const {
     HTTP_PORT = 8000
 } = process.env;
 
-app.use(express.json());
+
+app.use(express.urlencoded());
 app.use(morgan('dev'));
 app.use(router);
 
