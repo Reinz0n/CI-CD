@@ -2,6 +2,7 @@ const request = require('supertest');
 const app = require('../app.js');
 
 describe('base.index function', () => {
+    // positive
     test('res.json called { status: true, message: "Hello world!"', async () => {
         try {
             const res = await request(app).get('/');
@@ -18,6 +19,7 @@ describe('base.index function', () => {
 });
 
 describe('base.sum function', () => {
+    // positive
     test('res.json called { status: true, message: "success", data: {x: x, y: y, result: x+y}', async () => {
         try {
             const x = 10;
@@ -37,4 +39,13 @@ describe('base.sum function', () => {
             expect(err).toBe('error'); // test gagal karena err != 'error'
         }
     });
+
+    /*
+    Positive case:
+    - Login email dan password benar -> expect berhasil
+    
+    Negative case:
+    - kalau email salah -> expect error
+    - kalau password salah -> expect error
+    */
 });
