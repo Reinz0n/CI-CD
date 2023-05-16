@@ -1,7 +1,0 @@
-Pseudocode:
-
-START
-INPUT r
-K = 2 x 3,14 x r
-OUTPUT K
-END

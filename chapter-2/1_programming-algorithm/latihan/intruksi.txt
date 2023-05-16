@@ -1,6 +1,0 @@
-Kamu diminta untuk membuat:
-1. algoritma(.txt)
-2. pseudocode(.txt)
-3. flowchart(.jpeg)
-
-untuk menghitung luas dan keliling sebuah lingkaran dimana hasil perhitungan akan ditampilkan.

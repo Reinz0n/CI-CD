@@ -1,5 +1,0 @@
-// Algoritma menghitung keliling lingkaran
-1. Masukkan bilangan pi
-1. Masukkan jari-jari lingkaran
-2. Melakukan perhitungan keliling lingkaran = 2 * pi * jari-jari
-3. Mencetak keliling lingkaran	

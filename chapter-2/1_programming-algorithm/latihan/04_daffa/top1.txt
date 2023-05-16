@@ -1,6 +1,0 @@
-1. Declare var circumference (float)
-2. Declare var phi = 3.14 (float)
-3. Declare var r (float)
-4. read r
-5. circumference = 2 * 3.14 * r
-6. write circumference

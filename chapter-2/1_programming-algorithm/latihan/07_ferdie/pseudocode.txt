@@ -1,9 +1,0 @@
-start
-var phi = 3.14 or = 22/7
-var r
-read(phi)
-read(r)
-keliling <- 2 x phi x r
-write(keliling)
-output(keliling)
-end

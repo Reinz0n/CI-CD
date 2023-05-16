@@ -1,6 +1,0 @@
-Pseudocode
-
-- phi <- 3.14
-- Input (r)
-- Keliling <-2phi * r
-- Output (Keliling)

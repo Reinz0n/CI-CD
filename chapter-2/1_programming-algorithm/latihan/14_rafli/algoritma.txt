@@ -1,3 +1,0 @@
-tentukan jari jari lingkaran
-masukkan nilai jari-jari lingkaran kedalam rumus keliling lingkaran: 2 * 3,14 * jari-jari
-tuliskan hasil perhitungan keliling lingkaran
