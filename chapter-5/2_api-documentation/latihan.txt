@@ -1,3 +1,0 @@
-Tambahkan 2 endpoint baru:
-- create channel (POST) - /channels (Required login)
-- list all channels (GET) - /channels 
