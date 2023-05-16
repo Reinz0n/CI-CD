@@ -1,9 +1,0 @@
-Video
-- title
-- description
-- channel_id
-
-Tugas:
-- Membuat model video
-- Membuat migration Video
-- Membuat CRUD video
