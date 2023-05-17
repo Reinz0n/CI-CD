@@ -7,7 +7,7 @@ const middlewares = require('../utils/middlewares');
 router.get('', (req, res) => {
     return res.status(200).json({
         status: true,
-        message: 'welcome to auth api!',
+        message: 'welcome to auth api from production!',
         data: null
     });
 });
